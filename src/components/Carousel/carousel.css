@@ -1,0 +1,45 @@
+.carousel {
+  width: 300px;
+  height: 400px;
+  position: relative;
+}
+
+.carousel__content ul{
+  list-style: none;
+}
+
+.carousel__content:hover + .carousel__next-indicator, .carousel__prev-indicator + .carousel__content:hover{
+  visibility: visible;
+}
+
+.carousel__prev-indicator {
+  position: absolute;
+  left: 5%;
+  visibility: hidden;
+}
+
+.carousel__prev-indicator::before {
+  content: "<";
+  width: 1rem;
+  height: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: gray;
+}
+
+.carousel__next-indicator {
+  position: absolute;
+  right: 5%;
+  visibility: hidden;
+}
+
+.carousel__next-indicator::before {
+  content: ">";
+  width: 1rem;
+  height: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: gray;
+}
