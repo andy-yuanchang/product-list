@@ -4,7 +4,7 @@ import Card from './components/Card';
 import { useState } from 'react';
 import { v4 as uid } from 'uuid';
 
-const products = [{
+let products = [{
   id: uid(),
   title: "TEST 1",
   price: (Math.random() * 1000).toFixed(0),
@@ -23,14 +23,14 @@ const products = [{
   title: "This is a headset from yahoo",
   price: (Math.random() * 1000).toFixed(0),
   stars: 4.5,
-  imageList: ['/assets/images/p039251421684-item-9ef9xf4x0250x0250-m.jpeg'],
+  imageList: ['/assets/images/p088581873018-item-6472xf4x0270x0270-m.jpeg'],
   discount: 20
 }, {
   id: uid(),
   title: "This is something useful from yahoo",
   price: (Math.random() * 1000).toFixed(0),
   stars: 4.5,
-  imageList: ['/assets/images/p039251421684-item-9ef9xf4x0250x0250-m.jpeg'],
+  imageList: ['/assets/images/p0310161864519-item-d105xf4x0910x0910-m.jpeg'],
   discount: 20
 }, {
   id: uid(),
@@ -58,6 +58,13 @@ const products = [{
   ],
   discount: 20
 }];
+
+products = products
+  .concat(products.slice().map(product => ({ ...product, id: uid() })))
+  .concat(products.slice().map(product => ({ ...product, id: uid() })))
+  .concat(products.slice().map(product => ({ ...product, id: uid() })))
+  .concat(products.slice().map(product => ({ ...product, id: uid() })))
+  .concat(products.slice().map(product => ({ ...product, id: uid() })))
 
 function App() {
   const [collectedProductIDs, setCollectedProductIDs] = useState([]);
@@ -90,8 +97,8 @@ function App() {
             const product = products.find(product => product.id === productID);
             return (
               <li key={productID} className="collected-products__item">
-                <img 
-                  src={product.imageList[0]} 
+                <img
+                  src={product.imageList[0]}
                   alt={product.title}
                 />
                 <h2>{product.title}</h2>
@@ -109,19 +116,19 @@ function App() {
         {
           products.map(product => {
             return (
-              <li 
-                key={product.id} 
-                className="product-list__item" 
+              <li
+                key={product.id}
+                className="product-list__item"
                 onClick={(_) => handleClickProductItem(product.id)}
               >
                 {
-                  <Card 
+                  <Card
                     imageList={product.imageList}
                     title={product.title}
                     price={product.price}
                     stars={product.stars}
                     discount={product.discount}
-                    isCollected={collectedProductIDs.find(collectedProduct => collectedProduct.id === product.id)}
+                    isCollected={collectedProductIDs.find(id => id === product.id)}
                   />
                 }
               </li>

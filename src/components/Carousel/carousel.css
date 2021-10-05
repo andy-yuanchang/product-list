@@ -1,45 +1,43 @@
 .carousel {
-  width: 300px;
-  height: 400px;
+  width: 100%;
+  height: 300px;
+  max-height: 100%;
   position: relative;
+  overflow: hidden;
 }
 
-.carousel__content ul{
+.carousel__content .list {
   list-style: none;
+  padding: 0;
+  margin: 0 auto;
 }
 
-.carousel__content:hover + .carousel__next-indicator, .carousel__prev-indicator + .carousel__content:hover{
-  visibility: visible;
+.carousel__content .list__item {
+  width: 100%;
+}
+
+.carousel__content .list__item img{
+  width: 100%;
 }
 
 .carousel__prev-indicator {
   position: absolute;
   left: 5%;
+  top: 50%;
   visibility: hidden;
 }
 
-.carousel__prev-indicator::before {
-  content: "<";
-  width: 1rem;
-  height: 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: gray;
+.carousel__prev-indicator.hovered {
+  visibility: visible;
 }
 
 .carousel__next-indicator {
   position: absolute;
   right: 5%;
+  top: 50%;
   visibility: hidden;
 }
 
-.carousel__next-indicator::before {
-  content: ">";
-  width: 1rem;
-  height: 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: gray;
+.carousel__next-indicator.hovered {
+  visibility: visible;
 }

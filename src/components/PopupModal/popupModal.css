@@ -34,11 +34,19 @@
 }
 
 .popup-modal__close-button {
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  top: 2%;
+  right: 2%;
+  background: gray;
+  border-radius: var(--border-radius);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.popup-modal__close-button::before {
+/* .popup-modal__close-button::before {
   position: absolute;
   top: 2%;
   right: 2%;
@@ -50,4 +58,4 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
