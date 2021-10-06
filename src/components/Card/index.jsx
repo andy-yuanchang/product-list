@@ -1,7 +1,7 @@
 import React from 'react'
 import Carousel from '../Carousel';
-import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai'
 import { BsStarFill, BsStarHalf, BsCurrencyDollar } from 'react-icons/bs'
+import { TiHeart } from 'react-icons/ti'
 import './card.css'
 
 export default function Card(props) {
@@ -49,9 +49,10 @@ export default function Card(props) {
         )
       }
       <div className={`card__collection-icon ${isCollected && "collected"}`} onClick={onClick}>
-        {
+        <TiHeart />
+        {/* {
           isCollected ? <AiFillHeart /> : <AiOutlineHeart />
-        }
+        } */}
       </div>
     </div>
   )

@@ -6,26 +6,29 @@
   overflow: hidden;
 }
 
+.carousel__content {
+  height: 100%;
+}
+
 .carousel__content .carousel__image-list {
   list-style: none;
   padding: 0;
   margin: 0 auto;
   display: flex;
   transition: transform 0.75s ease 0s;
+  height: 100%;
 }
 
 .carousel__content .list__item {
   flex: 1 0 100%;
+  height: 100%;
   overflow: hidden;
-  height: 300px;
-  position: relative;
 }
 
 .carousel__content .list__item img{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .carousel__arrow-mask {
