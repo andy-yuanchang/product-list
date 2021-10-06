@@ -21,7 +21,7 @@ let products = [{
   stars: 4.5,
   imageList: [
     '/assets/images/p039251421684-item-9ef9xf4x0250x0250-m.jpeg',
-    '/assets/images/p09043632817-item-8b03xf4x0800x0800-m.jpeg'
+    // '/assets/images/p09043632817-item-8b03xf4x0800x0800-m.jpeg'
   ],
   discount: 20
 }, {
@@ -46,12 +46,14 @@ let products = [{
   discount: 20
 }, {
   id: uid(),
-  title: "This is a lamp from yahoo",
+  title: "This is a jewelry from yahoo",
   price: (Math.random() * 1000).toFixed(0),
   stars: 4.5,
   imageList: [
-    '/assets/images/p0423166222101-item-738bxf4x0900x0900-m.jpeg',
-    '/assets/images/p0310161864519-item-d105xf4x0910x0910-m.jpeg'
+    '/assets/images/52c344cf-67ee-480c-8f2e-88f827e868c1.jpg',
+    '/assets/images/107dd7fb-753b-405d-9f7f-ca6728eafebf.jpg',
+    '/assets/images/67698407-1ecc-4cdd-8860-2d21fb5338dc.jpg',
+    '/assets/images/adf9593a-2934-4dd9-bee7-e59f4ff2bc2f.jpg'
   ],
   discount: 20
 }, {
@@ -60,13 +62,13 @@ let products = [{
   price: (Math.random() * 1000).toFixed(0),
   stars: 4.5,
   imageList: [
-    '/assets/images/p0445226437796-item-1be3xf4x1000x1000-m.jpeg', 
+    '/assets/images/p0445226437796-item-1be3xf4x1000x1000-m.jpeg',
     '/assets/images/p0677218370727-item-ddb2xf4x1000x1000-m.jpeg'
   ],
   discount: 20
 }, {
   id: uid(),
-  title: "This is a battery or charger from yahoo",
+  title: "Orren Ellis Chana 3-Light LED Kitchen Island Dome Pendant",
   price: (Math.random() * 1000).toFixed(0),
   stars: 4.5,
   imageList: [
@@ -77,8 +79,12 @@ let products = [{
   discount: 20
 }];
 
-for (let i = 0; i < 3; i++) {
-  products = products.concat(products.slice().map(product => ({ ...product, id: uid() })));
+for (let i = 0; i < 5; i++) {
+  products = products.concat(products.slice().map(product => ({
+    ...product,
+    id: uid(),
+    stars: Math.ceil(Math.random() * 4) + (Math.random() > 0.5 ? 1 : 0.5)
+  })));
 }
 
 function App() {
@@ -112,11 +118,13 @@ function App() {
             const product = products.find(product => product.id === productID);
             return (
               <li key={productID} className="collected-products__item">
-                <img
-                  src={product.imageList[0]}
-                  alt={product.title}
-                />
-                <h2>{product.title}</h2>
+                <div className="image-mask">
+                  <img
+                    src={product.imageList[0]}
+                    alt={product.title}
+                  />
+                </div>
+                <section>{product.title}</section>
               </li>
             )
           })

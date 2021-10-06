@@ -4,8 +4,6 @@ import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai'
 import { BsStarFill, BsStarHalf, BsCurrencyDollar } from 'react-icons/bs'
 import './card.css'
 
-const STAR_COLOR_RGB = "#ebc700";
-
 export default function Card(props) {
   const { 
     imageList = [], 
@@ -31,16 +29,16 @@ export default function Card(props) {
       </div>
       <div className="card__content">
         <h2>{title}</h2>
-        <p className="price"><BsCurrencyDollar/>{price}</p>
+        <h3 className="price"><BsCurrencyDollar/>{price}</h3>
         <p className="stars">
           {
             halfStars ? (
               <>
-                {Array(fillStars).fill(<BsStarFill color={STAR_COLOR_RGB}/>)}
-                <BsStarHalf color={STAR_COLOR_RGB}/>
+                {Array(fillStars).fill(<BsStarFill/>)}
+                <BsStarHalf/>
               </>
             ) : (
-              Array(fillStars).fill(<BsStarFill color={STAR_COLOR_RGB}/>)
+              Array(fillStars).fill(<BsStarFill/>)
             )
           }
         </p>
@@ -50,13 +48,9 @@ export default function Card(props) {
           <div className="card__discount">{`${discount}% off`}</div>
         )
       }
-      <div className="card__collection-icon" onClick={onClick}>
+      <div className={`card__collection-icon ${isCollected && "collected"}`} onClick={onClick}>
         {
-          isCollected ? (
-            <AiFillHeart color={"red"}/>
-          ) : (
-            <AiOutlineHeart />
-          )
+          isCollected ? <AiFillHeart /> : <AiOutlineHeart />
         }
       </div>
     </div>

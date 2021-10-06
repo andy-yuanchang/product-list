@@ -14,7 +14,7 @@
 
 .popup-modal__content {
   position: relative;
-  width: 70vw;
+  width: 50vw;
   height: 70vh;
   border-radius: var(--border-radius);
   background: rgba(255, 255, 255, 1);
@@ -22,6 +22,26 @@
   left: 50%;
   transform: translate(-50%, -50%);
   animation: gradually-scale 0.3s ease-out;
+  /* padding: 1rem; */
+  overflow-y: auto;
+}
+
+@media screen and (min-width: 376px) and (max-width: 768px) {
+  .popup-modal__content {
+    width: 90vw;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .popup-modal__content {
+    width: 70vw;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .popup-modal__content {
+    width: 50vw;
+  }
 }
 
 @keyframes gradually-scale {
@@ -35,27 +55,18 @@
 
 .popup-modal__close-button {
   position: absolute;
-  width: 1rem;
-  height: 1rem;
+  width: 2rem;
+  height: 2rem;
   top: 2%;
   right: 2%;
-  background: gray;
+  background: linear-gradient(rgb(64, 64, 145), lightblue);
   border-radius: var(--border-radius);
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
-/* .popup-modal__close-button::before {
-  position: absolute;
-  top: 2%;
-  right: 2%;
-  content: "x";
-  width: 1rem;
-  height: 1rem;
-  border-radius: var(--border-radius);
-  background: gray;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
+.popup-modal__close-button:hover {
+  box-shadow: 0 0 10px linear-gradient(rgb(64, 64, 145), lightblue), 0 0 40px linear-gradient(rgb(64, 64, 145), lightblue), 0 0 80px linear-gradient(rgb(64, 64, 145), lightblue);
+}

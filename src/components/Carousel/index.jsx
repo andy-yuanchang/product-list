@@ -22,9 +22,13 @@ export default function Carousel(props) {
   return (
     <div className="carousel">
       <div className="carousel__content">
-        <div className="carousel__arrow-mask prev" onClick={handlePrevImage}>
-          <FaLessThan />
-        </div>
+        {
+          imageList.length > 1 && (
+            <div className="carousel__arrow-mask prev" onClick={handlePrevImage}>
+              <FaLessThan />
+            </div>
+          )
+        }
         <ul className="carousel__image-list" ref={imageListRef}>
           {
             imageList.map((url, index) => (
@@ -34,9 +38,13 @@ export default function Carousel(props) {
             ))
           }
         </ul>
-        <div className="carousel__arrow-mask next" onClick={handleNextImage}>
-          <FaGreaterThan />
-        </div>
+        {
+          imageList.length > 1 && (
+            <div className="carousel__arrow-mask next" onClick={handleNextImage}>
+              <FaGreaterThan />
+            </div>
+          )
+        }
       </div>
     </div>
   )
