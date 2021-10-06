@@ -6,38 +6,45 @@
   overflow: hidden;
 }
 
-.carousel__content .list {
+.carousel__content .carousel__image-list {
   list-style: none;
   padding: 0;
   margin: 0 auto;
+  display: flex;
+  transition: transform 0.75s ease 0s;
 }
 
 .carousel__content .list__item {
   width: 100%;
+  flex: 1 0 100%;
 }
 
 .carousel__content .list__item img{
   width: 100%;
 }
 
-.carousel__prev-indicator {
+.carousel__arrow-mask {
   position: absolute;
+  visibility: hidden;
+  padding: 0.5rem;
+  color: white;
+  top: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.carousel__arrow-mask.prev {
   left: 5%;
-  top: 50%;
-  visibility: hidden;
 }
 
-.carousel__prev-indicator.hovered {
-  visibility: visible;
-}
-
-.carousel__next-indicator {
-  position: absolute;
+.carousel__arrow-mask.next {
   right: 5%;
-  top: 50%;
-  visibility: hidden;
 }
 
-.carousel__next-indicator.hovered {
+.carousel__content:hover .carousel__arrow-mask {
   visibility: visible;
+  background: rgba(0, 0, 0, 0.7);
+  cursor: pointer;
 }

@@ -1,40 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import './carousel.css';
 import { FaGreaterThan, FaLessThan } from 'react-icons/fa';
 
 export default function Carousel(props) {
   const { imageList = [] } = props;
+  const imageListRef = useRef(null);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
-  const [isHover, setIsHover] = useState(false);
-
-  function handleMouseHover(_) {
-    setIsHover(true);
+  function handlePrevImage(_) {
+    const prevIndex = selectedIndex - 1 < 0 ? imageList.length - 1 : selectedIndex - 1
+    imageListRef.current.style.transform = `translate3d(${-1 * imageListRef.current.children[prevIndex].offsetLeft}px, 0px, 0px)`;
+    setSelectedIndex(prevIndex);
   }
 
-  function handleMouseLeave(e) {
-    if (!e.target.className.includes("-indicator")) {
-      setIsHover(false);
-    }
+  function handleNextImage(_) {
+    const nextIndex = selectedIndex + 1 > imageList.length - 1 ? 0 : selectedIndex + 1
+    imageListRef.current.style.transform = `translate3d(${-1 * imageListRef.current.children[nextIndex].offsetLeft}px, 0px, 0px)`;
+    setSelectedIndex(nextIndex);
   }
 
   return (
     <div className="carousel">
-      <div className={`carousel__prev-indicator ${isHover && "hovered"}`}>
-        <FaLessThan />
-      </div>
-      <div className="carousel__content" onMouseOver={handleMouseHover} onMouseLeave={handleMouseLeave}>
-        <ul className="list">
+      <div className="carousel__content">
+        <div className="carousel__arrow-mask prev" onClick={handlePrevImage}>
+          <FaLessThan />
+        </div>
+        <ul className="carousel__image-list" ref={imageListRef}>
           {
             imageList.map((url, index) => (
               <li key={index} className="list__item">
-                <img src={url} alt={url}/>
+                <img src={url} alt={url} />
               </li>
             ))
           }
         </ul>
-      </div>
-      <div className={`carousel__next-indicator ${isHover && "hovered"}`}>
-        <FaGreaterThan />
+        <div className="carousel__arrow-mask next" onClick={handleNextImage}>
+          <FaGreaterThan />
+        </div>
       </div>
     </div>
   )

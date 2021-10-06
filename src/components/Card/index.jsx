@@ -13,7 +13,8 @@ export default function Card(props) {
     price = 0,
     discount = 0,
     isCollected = false,
-    stars = 0
+    stars = 0,
+    onClick = () => {}
   } = props;
 
   const fillStars = Math.floor(stars);
@@ -49,7 +50,7 @@ export default function Card(props) {
           <div className="card__discount">{`${discount}% off`}</div>
         )
       }
-      <div className="card__collection-icon">
+      <div className="card__collection-icon" onClick={onClick}>
         {
           isCollected ? (
             <AiFillHeart color={"red"}/>

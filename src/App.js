@@ -9,42 +9,60 @@ let products = [{
   title: "TEST 1",
   price: (Math.random() * 1000).toFixed(0),
   stars: 5,
-  imageList: ['/assets/images/p09043632817-item-8b03xf4x0800x0800-m.jpeg'],
+  imageList: [
+    '/assets/images/p09043632817-item-8b03xf4x0800x0800-m.jpeg',
+    '/assets/images/p039251421684-item-9ef9xf4x0250x0250-m.jpeg'
+  ],
   discount: 10
 }, {
   id: uid(),
   title: "This is a keyboard from yahoo",
   price: (Math.random() * 1000).toFixed(0),
   stars: 4.5,
-  imageList: ['/assets/images/p039251421684-item-9ef9xf4x0250x0250-m.jpeg'],
+  imageList: [
+    '/assets/images/p039251421684-item-9ef9xf4x0250x0250-m.jpeg',
+    '/assets/images/p09043632817-item-8b03xf4x0800x0800-m.jpeg'
+  ],
   discount: 20
 }, {
   id: uid(),
   title: "This is a headset from yahoo",
   price: (Math.random() * 1000).toFixed(0),
   stars: 4.5,
-  imageList: ['/assets/images/p088581873018-item-6472xf4x0270x0270-m.jpeg'],
+  imageList: [
+    '/assets/images/p088581873018-item-6472xf4x0270x0270-m.jpeg',
+    '/assets/images/p0310161864519-item-d105xf4x0910x0910-m.jpeg'
+  ],
   discount: 20
 }, {
   id: uid(),
   title: "This is something useful from yahoo",
   price: (Math.random() * 1000).toFixed(0),
   stars: 4.5,
-  imageList: ['/assets/images/p0310161864519-item-d105xf4x0910x0910-m.jpeg'],
+  imageList: [
+    '/assets/images/p0310161864519-item-d105xf4x0910x0910-m.jpeg',
+    '/assets/images/p088581873018-item-6472xf4x0270x0270-m.jpeg'
+  ],
   discount: 20
 }, {
   id: uid(),
   title: "This is a lamp from yahoo",
   price: (Math.random() * 1000).toFixed(0),
   stars: 4.5,
-  imageList: ['/assets/images/p0423166222101-item-738bxf4x0900x0900-m.jpeg'],
+  imageList: [
+    '/assets/images/p0423166222101-item-738bxf4x0900x0900-m.jpeg',
+    '/assets/images/p0310161864519-item-d105xf4x0910x0910-m.jpeg'
+  ],
   discount: 20
 }, {
   id: uid(),
   title: "This is a camera from yahoo",
   price: (Math.random() * 1000).toFixed(0),
   stars: 4.5,
-  imageList: ['/assets/images/p0445226437796-item-1be3xf4x1000x1000-m.jpeg', '/assets/images/p0677218370727-item-ddb2xf4x1000x1000-m.jpeg'],
+  imageList: [
+    '/assets/images/p0445226437796-item-1be3xf4x1000x1000-m.jpeg', 
+    '/assets/images/p0677218370727-item-ddb2xf4x1000x1000-m.jpeg'
+  ],
   discount: 20
 }, {
   id: uid(),
@@ -59,12 +77,9 @@ let products = [{
   discount: 20
 }];
 
-products = products
-  .concat(products.slice().map(product => ({ ...product, id: uid() })))
-  .concat(products.slice().map(product => ({ ...product, id: uid() })))
-  .concat(products.slice().map(product => ({ ...product, id: uid() })))
-  .concat(products.slice().map(product => ({ ...product, id: uid() })))
-  .concat(products.slice().map(product => ({ ...product, id: uid() })))
+for (let i = 0; i < 3; i++) {
+  products = products.concat(products.slice().map(product => ({ ...product, id: uid() })));
+}
 
 function App() {
   const [collectedProductIDs, setCollectedProductIDs] = useState([]);
@@ -119,7 +134,6 @@ function App() {
               <li
                 key={product.id}
                 className="product-list__item"
-                onClick={(_) => handleClickProductItem(product.id)}
               >
                 {
                   <Card
@@ -129,6 +143,7 @@ function App() {
                     stars={product.stars}
                     discount={product.discount}
                     isCollected={collectedProductIDs.find(id => id === product.id)}
+                    onClick={(_) => handleClickProductItem(product.id)}
                   />
                 }
               </li>
