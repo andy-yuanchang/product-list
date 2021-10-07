@@ -1,11 +1,17 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './carousel.css';
 import { FaGreaterThan, FaLessThan } from 'react-icons/fa';
+import useWindowSize from '../../hooks/useWindowSize';
 
 export default function Carousel(props) {
   const { imageList = [] } = props;
   const imageListRef = useRef(null);
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [width, height] = useWindowSize();
+
+  useEffect(() => {
+    imageListRef.current.style.transform = `translate3d(${-1 * imageListRef.current.children[selectedIndex].offsetLeft}px, 0px, 0px)`;
+  }, [width, height])
 
   function handlePrevImage(_) {
     const prevIndex = selectedIndex - 1 < 0 ? imageList.length - 1 : selectedIndex - 1

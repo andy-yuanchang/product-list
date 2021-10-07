@@ -57,6 +57,7 @@
   width: 100%;
   height: 100%;
   background: linear-gradient(90deg, rgb(64, 64, 145), lightblue);
+  background: #c2e4e7;
   border: 0;
   cursor: pointer;
 }
@@ -78,19 +79,18 @@
 }
 
 .collected-products__item .image-mask{
-  position: relative;
-  overflow: hidden;
-  height: 300px;
-  flex-basis: 40%;
+  height: 150px;
+  flex: 0 0 40%;
 }
 
 .collected-products__item .image-mask img{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .collected-products__item section{
   font-size: large;
+  font-family: 'Kalam', cursive;
 }
