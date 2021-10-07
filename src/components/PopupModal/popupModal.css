@@ -61,6 +61,7 @@
   top: 1%;
   right: 1%;
   background: linear-gradient(rgb(64, 64, 145), lightblue);
+  background: #c2e4e7;
   border-radius: var(--border-radius);
   display: flex;
   justify-content: center;
