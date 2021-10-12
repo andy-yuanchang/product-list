@@ -5,14 +5,14 @@ import { TiHeart } from 'react-icons/ti'
 import './card.css'
 
 export default function Card(props) {
-  const { 
-    imageList = [], 
-    title = "", 
+  const {
+    imageList = [],
+    title = "",
     price = 0,
     discount = 0,
     isCollected = false,
     stars = 0,
-    onClick = () => {}
+    onClick = () => { }
   } = props;
 
   const fillStars = Math.floor(stars);
@@ -22,23 +22,25 @@ export default function Card(props) {
     <div className="card">
       <div className="card__image">
         {
-          <Carousel 
+          <Carousel
             imageList={imageList}
           />
         }
       </div>
       <div className="card__content">
-        <h2>{title}</h2>
-        <h3 className="price"><BsCurrencyDollar/>{price}</h3>
+        <div className="title">
+          <h2>{title}</h2>
+        </div>
+        <h3 className="price"><BsCurrencyDollar />{price}</h3>
         <p className="stars">
           {
             halfStars ? (
               <>
-                {Array(fillStars).fill(<BsStarFill/>)}
-                <BsStarHalf/>
+                {Array(fillStars).fill(<BsStarFill />)}
+                <BsStarHalf />
               </>
             ) : (
-              Array(fillStars).fill(<BsStarFill/>)
+              Array(fillStars).fill(<BsStarFill />)
             )
           }
         </p>

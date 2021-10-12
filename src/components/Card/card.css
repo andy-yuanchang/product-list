@@ -27,19 +27,25 @@
   flex-direction: column;
 }
 
-.card__content > h2 {
+.card__content > .title {
+  flex-basis: 50%;
+}
+
+.card__content > .title > h2 {
+  display: -webkit-box;
   overflow: hidden;
   text-overflow: ellipsis;
-  display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  flex-basis: 50%;
   font-family: 'Kalam', cursive;
+  margin: 0;
 }
 
 .card__content > .price {
   display: flex;
   align-items: center;
+  margin: 0;
+  margin-bottom: 1rem;
 }
 
 .card__content > .stars {
@@ -47,6 +53,7 @@
   justify-content: flex-start;
   gap: 0.3rem;
   font-size: 1.2rem;
+  margin: 0;
 }
 
 .card__content > .stars svg {
