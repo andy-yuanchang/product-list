@@ -11,17 +11,15 @@ export default function Carousel(props) {
 
   useEffect(() => {
     imageListRef.current.style.transform = `translate3d(${-1 * imageListRef.current.children[selectedIndex].offsetLeft}px, 0px, 0px)`;
-  }, [width, height])
+  }, [width, height, selectedIndex])
 
   function handlePrevImage(_) {
-    const prevIndex = selectedIndex - 1 < 0 ? imageList.length - 1 : selectedIndex - 1
-    imageListRef.current.style.transform = `translate3d(${-1 * imageListRef.current.children[prevIndex].offsetLeft}px, 0px, 0px)`;
+    const prevIndex = selectedIndex - 1 < 0 ? imageList.length - 1 : selectedIndex - 1;
     setSelectedIndex(prevIndex);
   }
 
   function handleNextImage(_) {
-    const nextIndex = selectedIndex + 1 > imageList.length - 1 ? 0 : selectedIndex + 1
-    imageListRef.current.style.transform = `translate3d(${-1 * imageListRef.current.children[nextIndex].offsetLeft}px, 0px, 0px)`;
+    const nextIndex = selectedIndex + 1 > imageList.length - 1 ? 0 : selectedIndex + 1;
     setSelectedIndex(nextIndex);
   }
 
